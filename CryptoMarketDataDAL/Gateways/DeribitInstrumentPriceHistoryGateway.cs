@@ -27,24 +27,6 @@ namespace DeribitDAL.Gateways
             }
         }
 
-        public Task<IReadOnlyCollection<DeribitInstrumentPriceHistoryItem>> GetHistoryBy(string instrumentName, DateTimeOffset fromDate, DateTimeOffset toDate)
-        {
-            using (var context = new DeribitDbContext())
-            {
-                var results = (IReadOnlyCollection<DeribitInstrumentPriceHistoryItem>)(
-                    context.DeribitInstrumentPriceHistory
-                    .AsEnumerable()
-                    .Where(item =>
-                        //item.InstrumentName == instrumentName
-                        //&& item.Timestamp <= toDate
-                         item.Timestamp <= toDate
-                        && item.Timestamp >= fromDate).ToList()
-                    );
-
-                return Task.FromResult(results);
-            }
-        }
-
         public Task<IReadOnlyCollection<DeribitInstrumentPriceHistoryItem>> GetHistoryFor(IEnumerable<string> instrumentNames, DateTimeOffset fromDate, DateTimeOffset toDate)
         {
             var results = new List<DeribitInstrumentPriceHistoryItem>();

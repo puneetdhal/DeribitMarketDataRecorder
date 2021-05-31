@@ -9,8 +9,6 @@ namespace DeribitDAL.Gateways
     {
         Task AddHistoryItem(DeribitInstrumentPriceHistoryItem item);
 
-        Task<IReadOnlyCollection<DeribitInstrumentPriceHistoryItem>> GetHistoryBy(string instrumentName, DateTimeOffset fromDate, DateTimeOffset toDate);
-
         Task<IReadOnlyCollection<DeribitInstrumentPriceHistoryItem>> GetHistoryFor(IEnumerable<string> instrumentNames, DateTimeOffset fromDate, DateTimeOffset toDate);
     }
 }
